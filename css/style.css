@@ -1,69 +1,176 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --bg: #f4f4f4;
-  --text: #222;
+  --bg: #f1f5f9;
   --card: #ffffff;
-  --accent: #4f46e5;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --border: #e2e8f0;
 }
 
 body.dark {
-  --bg: #121212;
-  --text: #f5f5f5;
-  --card: #1e1e1e;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #334155;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 800px;
-  margin: 40px auto;
+  width: 100%;
+  max-width: 720px;
   background: var(--card);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* ========== HEADER ========== */
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
 }
 
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#themeToggle {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#themeToggle:hover {
+  background: var(--border);
+}
+
+/* ========== FORM ========== */
 form {
   display: flex;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
 }
 
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ========== BUTTONS ========== */
 button {
-  padding: 10px 16px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
   background: var(--accent);
   color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  transition: 0.2s ease;
 }
 
+button:hover {
+  background: var(--accent-hover);
+}
+
+/* ========== TABLE ========== */
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
+thead {
+  background: var(--bg);
 }
 
+th {
+  text-align: left;
+  font-size: 13px;
+  padding: 12px;
+  color: var(--muted);
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+/* ========== TASK STATES ========== */
 .done {
   text-decoration: line-through;
-  color: gray;
+  color: var(--muted);
+}
+
+/* Checkbox alignment */
+input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Delete button inside table */
+td button {
+  background: #ef4444;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+td button:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
 }
