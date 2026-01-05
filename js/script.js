@@ -16,7 +16,6 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// Render Tasks
 function renderTasks() {
   table.innerHTML = "";
   tasks.forEach((task, index) => {
